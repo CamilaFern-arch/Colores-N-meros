@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aprende Colores y Números 🌈</title>
+
+<link rel="icon" type="image/png" href="https://fonts.gstatic.com/s/i/short-term/release/googlestylesheet/palette/v1/32px.png">
+<link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/4561/4561571.png">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -61,9 +63,9 @@ padding: 0 16px;
 }
 .tab-btn {
 padding: 10px 22px;
-border-radius: var(–btn-radius);
+border-radius: var(--btn-radius);
 border: 3px solid transparent;
-font-family: ‘Nunito’, sans-serif;
+font-family: 'Nunito', sans-serif;
 font-size: 1rem;
 font-weight: 800;
 cursor: pointer;
@@ -91,9 +93,9 @@ transform: scale(1.06);
 
 /* LESSON CARD */
 .lesson-card {
-background: var(–card);
-border-radius: var(–radius);
-box-shadow: var(–shadow);
+background: var(--card);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
 padding: 28px 24px;
 margin-bottom: 20px;
 text-align: center;
@@ -171,9 +173,9 @@ display: inline-flex;
 align-items: center;
 gap: 8px;
 padding: 13px 28px;
-border-radius: var(–btn-radius);
+border-radius: var(--btn-radius);
 border: none;
-font-family: ‘Nunito’, sans-serif;
+font-family: 'Nunito', sans-serif;
 font-size: 1.1rem;
 font-weight: 800;
 cursor: pointer;
@@ -265,9 +267,9 @@ animation: popIn 0.3s ease backwards;
 
 /* GAME SCREEN */
 .game-card {
-background: var(–card);
-border-radius: var(–radius);
-box-shadow: var(–shadow);
+background: var(--card);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
 padding: 24px;
 text-align: center;
 }
@@ -299,7 +301,7 @@ font-size: 2.4rem;
 cursor: pointer;
 background: white;
 transition: transform 0.2s, border-color 0.2s;
-font-family: ‘Nunito’, sans-serif;
+font-family: 'Nunito', sans-serif;
 font-weight: 700;
 display: flex; flex-direction: column; align-items: center; gap: 4px;
 }
@@ -323,9 +325,9 @@ color: #555;
 
 /* STARS SCREEN */
 .stars-card {
-background: var(–card);
-border-radius: var(–radius);
-box-shadow: var(–shadow);
+background: var(--card);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
 padding: 28px 20px;
 text-align: center;
 }
@@ -352,11 +354,11 @@ color: #b8860b;
 .reset-btn {
 margin-top: 18px;
 padding: 11px 26px;
-border-radius: var(–btn-radius);
+border-radius: var(--btn-radius);
 border: none;
 background: #ff6b6b;
 color: white;
-font-family: ‘Nunito’, sans-serif;
+font-family: 'Nunito', sans-serif;
 font-size: 1rem;
 font-weight: 800;
 cursor: pointer;
@@ -386,15 +388,15 @@ animation: popIn 0.4s ease;
 max-width: 320px;
 }
 .celeb-emoji { font-size: 4rem; }
-.celeb-box h2 { font-size: 1.8rem; font-weight: 900; margin: 12px 0 6px; color: #2e7d32; }
+.celeb-box h2 { font-size: 1.8rem; font-weight: 900; margin: 12px 0 66px; color: #2e7d32; }
 .celeb-box p { color: #777; font-size: 1rem; font-weight: 700; margin-bottom: 18px; }
 .celeb-close {
 padding: 12px 30px;
-border-radius: var(–btn-radius);
+border-radius: var(--btn-radius);
 border: none;
 background: #43a047;
 color: white;
-font-family: ‘Nunito’, sans-serif;
+font-family: 'Nunito', sans-serif;
 font-size: 1.1rem;
 font-weight: 800;
 cursor: pointer;
@@ -443,8 +445,6 @@ text-align: center;
   <button class="tab-btn tab-stars" onclick="showScreen('stars')">⭐ Mis Estrellas</button>
 </div>
 
-<!-- COLORS SCREEN -->
-
 <div class="screen active" id="screen-colors">
   <div class="section-label">Módulo 1 · Los Colores</div>
   <div class="lesson-card">
@@ -455,20 +455,17 @@ text-align: center;
     </div>
     <div class="progress-wrap"><div class="progress-fill" id="color-progress" style="width:16%"></div></div>
 
+    <div class="color-circle" id="color-circle" onclick="speakWord(currentColorName())"></div>
+    <div class="color-name" id="color-name">Rojo</div>
+    <div class="color-emoji" id="color-emoji">❤️</div>
 
-<div class="color-circle" id="color-circle" onclick="speakWord(currentColorName())"></div>
-<div class="color-name" id="color-name">Rojo</div>
-<div class="color-emoji" id="color-emoji">❤️</div>
+    <p style="font-size:0.9rem;color:#aaa;font-weight:700;margin-bottom:10px;">Toca el círculo para escuchar</p>
 
-<p style="font-size:0.9rem;color:#aaa;font-weight:700;margin-bottom:10px;">Toca el círculo para escuchar</p>
+    <div class="objects-row" id="color-objects"></div>
 
-<div class="objects-row" id="color-objects"></div>
-
-<button class="say-btn" id="say-btn" onclick="speakWord(currentColorName())" style="background:#ffe0e0;color:#c0392b;">
-  🔊 Decir: <span id="say-label">Rojo</span>
-</button>
-
-
+    <button class="say-btn" id="say-btn" onclick="speakWord(currentColorName())" style="background:#ffe0e0;color:#c0392b;">
+      🔊 Decir: <span id="say-label">Rojo</span>
+    </button>
   </div>
 
   <div class="activity-section">
@@ -478,8 +475,6 @@ text-align: center;
     <div class="feedback-msg" id="color-feedback"></div>
   </div>
 </div>
-
-<!-- NUMBERS SCREEN -->
 
 <div class="screen" id="screen-numbers">
   <div class="section-label">Módulo 2 · Los Números</div>
@@ -491,17 +486,14 @@ text-align: center;
     </div>
     <div class="progress-wrap"><div class="progress-fill" id="num-progress" style="width:10%"></div></div>
 
-```
-<div class="number-display" id="num-display" style="color:#4a90d9;">1</div>
-<div class="number-word" id="num-word">Uno</div>
+    <div class="number-display" id="num-display" style="color:#4a90d9;">1</div>
+    <div class="number-word" id="num-word">Uno</div>
 
-<div class="dots-row" id="dots-row"></div>
+    <div class="dots-row" id="dots-row"></div>
 
-<button class="say-btn" onclick="speakWord(currentNumberWord())" style="background:#ddeeff;color:#1a5fb4;">
-  🔊 Decir: <span id="num-say-label">Uno</span>
-</button>
-```
-
+    <button class="say-btn" onclick="speakWord(currentNumberWord())" style="background:#ddeeff;color:#1a5fb4;">
+      🔊 Decir: <span id="num-say-label">Uno</span>
+    </button>
   </div>
 
   <div class="activity-section">
@@ -511,8 +503,6 @@ text-align: center;
     <div class="feedback-msg" id="count-feedback"></div>
   </div>
 </div>
-
-<!-- GAME SCREEN -->
 
 <div class="screen" id="screen-game">
   <div class="game-card">
@@ -531,8 +521,6 @@ text-align: center;
   </div>
 </div>
 
-<!-- STARS SCREEN -->
-
 <div class="screen" id="screen-stars">
   <div class="stars-card">
     <h2>⭐ Mis Estrellas</h2>
@@ -545,8 +533,6 @@ text-align: center;
     <button class="reset-btn" onclick="resetStars()">🔄 Reiniciar</button>
   </div>
 </div>
-
-<!-- CELEBRATION OVERLAY -->
 
 <div class="celebration" id="celebration">
   <div class="celeb-box">
